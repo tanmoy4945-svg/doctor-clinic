@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Medical Center | Premium Clinic Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #00bfff;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --success: #28a745;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        body { color: #333; line-height: 1.6; background-color: #fff; }
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* Navigation */
+        nav {
+            background: white; padding: 20px 8%; display: flex; justify-content: space-between;
+            align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-transform: uppercase; }
+        .logo span { color: var(--secondary); }
+        .nav-links a { color: var(--dark); font-weight: 600; margin-left: 30px; font-size: 15px; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Mega Hero Section */
+        .hero {
+            height: 85vh; 
+            background: linear-gradient(rgba(0, 86, 179, 0.1), rgba(0, 0, 0, 0.6)), 
+            url('https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            padding: 0 10%;
+        }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; letter-spacing: -1px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .btn-call { 
+            background: var(--success); color: white; padding: 18px 45px; 
+            border-radius: 50px; font-weight: 700; font-size: 18px; border: none; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        /* Highlight Section */
+        .highlights {
+            display: flex; gap: 20px; padding: 0 8%; margin-top: -60px; position: relative; z-index: 10;
+        }
+        .h-card {
+            flex: 1; background: white; padding: 30px; border-radius: 15px; text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-bottom: 5px solid var(--secondary);
+        }
+        .h-card i { font-size: 40px; color: var(--primary); margin-bottom: 15px; }
+
+        /* Services Grid */
+        .section { padding: 100px 8%; }
+        .title-center { text-align: center; margin-bottom: 60px; }
+        .title-center h2 { font-size: 32px; color: var(--dark); margin-bottom: 15px; position: relative; padding-bottom: 15px; }
+        .title-center h2::after { content: ''; width: 60px; height: 4px; background: var(--primary); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .s-box { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #eee; transition: 0.3s; }
+        .s-box:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .s-img { height: 220px; background-size: cover; background-position: center; }
+        .s-content { padding: 30px; }
+        .s-content i { color: var(--primary); font-size: 24px; margin-bottom: 15px; }
+
+        /* Doctor Profiles */
+        .doc-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .doc-card { text-align: center; }
+        .doc-card img { width: 100%; height: 350px; border-radius: 20px; object-fit: cover; margin-bottom: 20px; filter: grayscale(20%); transition: 0.3s; }
+        .doc-card:hover img { filter: grayscale(0%); }
+
+        /* Opening Hours & Contact Info */
+        .info-area { background: var(--light); display: flex; gap: 50px; flex-wrap: wrap; padding: 100px 8%; border-radius: 40px; margin: 0 2%; }
+        .timing { flex: 1; background: var(--primary); color: white; padding: 40px; border-radius: 20px; min-width: 320px; }
+        .timing h3 { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; }
+        .time-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: 500; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 80px 8% 30px; margin-top: 100px; }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; padding-bottom: 50px; }
+        .f-col h4 { color: var(--secondary); margin-bottom: 25px; }
+        .f-col p { opacity: 0.7; font-size: 14px; margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .highlights { flex-direction: column; padding: 0 5%; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BHARAT<span>CARE</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#about">Our Clinic</a>
+            <a href="#services">Specialities</a>
+            <a href="#doctors">Doctors</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Advanced Healthcare <br>For Your Family</h1>
+            <p>We provide international standard medical services in the heart of India. Trust our experts for a healthier tomorrow.</p>
+            <button class="btn-call"><i class="fas fa-phone-alt"></i> Call +91 98765 43210</button>
+        </div>
+    </header>
+
+    <div class="highlights">
+        <div class="h-card">
+            <i class="fas fa-user-md"></i>
+            <h3>Expert Doctors</h3>
+            <p>15+ Senior specialists available 24/7</p>
+        </div>
+        <div class="h-card">
+            <i class="fas fa-ambulance"></i>
+            <h3>Emergency</h3>
+            <p>Rapid response ambulance service</p>
+        </div>
+        <div class="h-card">
+            <i class="fas fa-flask"></i>
+            <h3>Digital Lab</h3>
+            <p>Accurate reports delivered on WhatsApp</p>
+        </div>
+    </div>
+
+    <section id="services" class="section">
+        <div class="title-center">
+            <h2>Specialized Departments</h2>
+            <p>Providing a wide range of premium medical solutions</p>
+        </div>
+        <div class="service-grid">
+            <div class="s-box">
+                <div class="s-img" style="background-image: url('https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="s-content">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Cardiology</h3>
+                    <p>Advanced heart care and diagnostic facilities for all cardiac patients.</p>
+                </div>
+            </div>
+            <div class="s-box">
+                <div class="s-img" style="background-image: url('https://images.pexels.com/photos/3779707/pexels-photo-3779707.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="s-content">
+                    <i class="fas fa-tooth"></i>
+                    <h3>Dental Studio</h3>
+                    <p>Modern dental treatments including implants, whitening, and surgery.</p>
+                </div>
+            </div>
+            <div class="s-box">
+                <div class="s-img" style="background-image: url('https://images.pexels.com/photos/305565/pexels-photo-305565.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="s-content">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Diagnostics</h3>
+                    <p>High-tech pathology lab with automated testing and quick results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-area">
+        <div class="timing">
+            <h3><i class="fas fa-clock"></i> Opening Hours</h3>
+            <div class="time-row"><span>Monday - Friday</span> <span>09:00 AM - 09:00 PM</span></div>
+            <div class="time-row"><span>Saturday</span> <span>10:00 AM - 06:00 PM</span></div>
+            <div class="time-row" style="color: var(--secondary); font-weight: bold;"><span>Sunday</span> <span>Emergency Only</span></div>
+            <br><br>
+            <p><i class="fas fa-map-marker-alt"></i> 12/A, Medical Hub, Kolkata, WB</p>
+        </div>
+        <div style="flex: 1.5; min-width: 320px;">
+            <h2>Why BharatCare is Best for You?</h2>
+            <br>
+            <p>Our clinic is equipped with the latest medical technology and a team of dedicated healthcare professionals. We prioritize patient comfort and accurate diagnosis above all.</p>
+            <br>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div><i class="fas fa-check-circle" style="color: var(--success);"></i> Fully Air Conditioned</div>
+                <div><i class="fas fa-check-circle" style="color: var(--success);"></i> Free Parking Facility</div>
+                <div><i class="fas fa-check-circle" style="color: var(--success);"></i> Cashless Treatment</div>
+                <div><i class="fas fa-check-circle" style="color: var(--success);"></i> 24/7 Pharmacy Access</div>
+            </div>
+            <br>
+            <img src="https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=600" style="width: 100%; border-radius: 20px;" alt="Clinic">
+        </div>
+    </section>
+
+    <section id="doctors" class="section">
+        <div class="title-center">
+            <h2>Meet Our Specialists</h2>
+        </div>
+        <div class="doc-row">
+            <div class="doc-card">
+                <img src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Doctor">
+                <h3>Dr. R.K. Mukherjee</h3>
+                <p style="color: var(--primary); font-weight: 600;">Chief Surgeon</p>
+            </div>
+            <div class="doc-card">
+                <img src="https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Doctor">
+                <h3>Dr. Shalini Singh</h3>
+                <p style="color: var(--primary); font-weight: 600;">Gynaecologist</p>
+            </div>
+            <div class="doc-card">
+                <img src="https://images.pexels.com/photos/3279197/pexels-photo-3279197.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Doctor">
+                <h3>Dr. Arjun Das</h3>
+                <p style="color: var(--primary); font-weight: 600;">Pediatrician</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="f-grid">
+            <div class="f-col">
+                <div class="logo" style="color:white; margin-bottom: 20px;">BHARAT<span>CARE</span></div>
+                <p>Trusted by over 10,000+ patients. Your health is our first priority.</p>
+            </div>
+            <div class="f-col">
+                <h4>Quick Links</h4>
+                <p>About Clinic</p>
+                <p>Doctors List</p>
+                <p>Services</p>
+                <p>Insurance Partner</p>
+            </div>
+            <div class="f-col">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> help@bharatcare.in</p>
+                <p><i class="fas fa-location-dot"></i> Kolkata, West Bengal</p>
+            </div>
+        </div>
+        <p style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; font-size: 13px; opacity: 0.5;">
+            &copy; 2026 BharatCare Multi-Speciality Clinic. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
